@@ -11,8 +11,9 @@ To do this, the Pwnmenu can be controlled with terminal commands bound to GPIO p
 Some examples of scripts we have run from this are:
 
 - making the Pwnagotchi send keystrokes via USB,
-- shut down the Pwnagotchi properly using the [powerutils companion plugin](https://gitlab.com/sn0wflake/pwnagotchi-powerutils-plugin)
-- or mount an ISO file on the Pwnagotchi as a USB key
+- shut down the Pwnagotchi properly using the [powerutils companion plugin](https://github.com/sn0wflakeAU/powerutils)
+- mount an ISO file on the Pwnagotchi as a USB key,
+- or turn the pwnagotchi in to a wifi adapter.
 
 ## Requirements
 
@@ -99,7 +100,7 @@ After the pwnagotchi reboots, you can see if the menu plugin is working by looki
 
 With all files installed and the plugin running, you can use SSH to log in to your pwnagotchi and test the pwnmenu with the `pwnmenucmd.py` script.
 
-Note that if the menu is not visible, running any command (except close) will show the menu.
+Note that if the menu is not visible, running any command (except **close**) will show the menu, while **ok** and **close** will close the menu.
 
 The `/home/pi/pwnmenucmd.py` script can accept the following commands:
 
