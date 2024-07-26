@@ -196,7 +196,7 @@ class PwnMenu(plugins.Plugin):
                 self.menuvisible = True
                 self.movecursor = False # Moved here anyway, no need to do it again.
                 self.updatelabels = True
-                if self.uihardware == 'waveshare_v2':
+                if self.uihardware == 'waveshare_v2' or 'waveshare_v3':
                     if view.ROOT:
                         view.ROOT.add_element('menubg', FilledRect(self.rectfill, color=WHITE))
                         view.ROOT.add_element('menuborder', Rect(self.rectfill, color=BLACK))
@@ -221,7 +221,7 @@ class PwnMenu(plugins.Plugin):
                 self.removeelements = False
                 self.menuvisible = False
                 self.menuitem = 0
-                if self.uihardware == 'waveshare_v2':
+                if self.uihardware == 'waveshare_v2' or 'waveshare_v3':
                     if view.ROOT:
                         view.ROOT.remove_element('menubg')
                         view.ROOT.remove_element('menuborder')
@@ -241,7 +241,7 @@ class PwnMenu(plugins.Plugin):
                             view.ROOT.remove_element('menudown')
             if self.movecursor and self.menuvisible:
                 self.movecursor = False
-                if self.uihardware == 'waveshare_v2':
+                if self.uihardware == 'waveshare_v2' or 'waveshare_v3':
                     if view.ROOT:
                         view.ROOT.remove_element('menucursor')
                         view.ROOT.add_element('menucursor', Text(color=BLACK, value='▶',
@@ -268,8 +268,8 @@ class PwnMenu(plugins.Plugin):
 
     def on_ui_setup(self, ui):
         self.ui = ui
-        if ui.is_waveshare_v2():
-            self.uihardware = 'waveshare_v2'
+        if ui.is_waveshare_v2() or ui.is_waveshare_v3():
+            self.uihardware = 'waveshare_v2' or 'waveshare_v3'
             self.labelcount = 7
         ui.add_element('menuicon', Text(color=BLACK, value='=', position=self.posmenuicon, font=fonts.Medium))
         self.menuiconvisible = True
@@ -287,7 +287,7 @@ class PwnMenu(plugins.Plugin):
                 conn = Client(address)
                 conn.send('stop')
                 conn.close()
-        if self.uihardware == 'waveshare_v2':
+        if self.uihardware == 'waveshare_v2' or 'waveshare_v3':
             # Check if element actually added below before removing.
             if self.menuvisible and not self.addelements:
                 self.menuvisible = False
@@ -310,7 +310,7 @@ class PwnMenu(plugins.Plugin):
         if self.menuvisible:
             if self.updatelabels:
                 self.updatelabels = False
-                if self.uihardware == 'waveshare_v2':
+                if self.uihardware == 'waveshare_v2' or 'waveshare_v3':
                     menuoffset = self.menuitemoffset
                     menuitem_text1 = menulabels[menuoffset + 1] if menuoffset + 1 < menuitemcount else ' '
                     menuitem_text2 = menulabels[menuoffset + 2] if menuoffset + 2 < menuitemcount else ' '
